@@ -4,7 +4,7 @@ import { MenuItemCard } from './';
 import { useGetMenuItemsQuery } from './../../../Apis/menuItemApi';
 import { useDispatch } from 'react-redux';
 import { setMenuItem } from './../../../Storage/Redux/menuItemSlice';
-import { MainLoader } from '../Common';
+import { MainLoader } from './../Common';
 
 const MenuItemList = () => {
 

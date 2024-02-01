@@ -1,5 +1,4 @@
 import jwt_decode from 'jwt-decode';
-import { userModel } from './../Interfaces';
 import { SD_Roles } from './../Interfaces/enums';
 
 const withAdminAuth = (WrappedComponent :any) => {
