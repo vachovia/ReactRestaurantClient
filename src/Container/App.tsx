@@ -1,4 +1,4 @@
-import {AccessDenied, Home, Login, MenuItemDetails, NotFound, Payment, Register, ShoppingCart} from './../Pages';
+import {AccessDenied, AllOrders, Home, Login, MenuItemDetails, MyOrders, NotFound, OrderConfirmed, OrderDetails, Payment, Register, ShoppingCart} from './../Pages';
 import {Header, Footer} from './../Components/Layout';
 import {Routes, Route} from 'react-router-dom';
 import {useEffect} from 'react';
@@ -43,6 +43,10 @@ function App() {
           <Route path="/menuItemDetails/:menuItemId" element={<MenuItemDetails />} />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/order/orderConfirmed/:id" element={<OrderConfirmed />} />
+          <Route path="/order/myOrders" element={<MyOrders />} />
+          <Route path="/order/allOrders" element={<AllOrders />} />
+          <Route path="/order/orderDetails/:id" element={<OrderDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/accessDenied" element={<AccessDenied />} />

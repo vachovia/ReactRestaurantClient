@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { apiResponse, shoppingCartModel } from './../Interfaces';
 
 const paymentApi = createApi({
   reducerPath: 'paymentApi',
@@ -6,7 +7,7 @@ const paymentApi = createApi({
     baseUrl: 'http://react.localhost/api/',
   }),
   endpoints: (builder) => ({
-    initiatePayment: builder.mutation({
+    initiatePayment: builder.mutation<apiResponse<shoppingCartModel>, string>({
       query: (userId) => ({
         url: 'Payment',
         method: 'POST',

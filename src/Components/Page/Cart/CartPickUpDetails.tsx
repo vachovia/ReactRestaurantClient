@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { apiResponse, cartItemModel, userModel } from "./../../../Interfaces";
+import { apiResponse, cartItemModel, shoppingCartModel, userModel } from "./../../../Interfaces";
 import { RootState } from "./../../../Storage/Redux/store";
 import { useState } from "react";
 import { inputHelper } from "./../../../Helper";
@@ -43,22 +43,18 @@ const CartPickUpDetails = () => {
 
         try{
             const orderSummary = {grandTotal, totalItems};
-            const {data}: apiResponse = await initiatePayment(userFromStore.uid);
+            const response: apiResponse<shoppingCartModel> = await initiatePayment(userFromStore.uid!).unwrap();
             
             navigate('/payment', {
               state: {
-                apiResult: data?.result,
+                apiResult: response?.result,
                 userInput: userInput,
-                orderSummary: orderSummary
+                orderSummary: orderSummary,
               },
             });
         } catch(e) {
             console.log(e);
         }
-
-        
-
-        
 
         setLoading(false);
     }

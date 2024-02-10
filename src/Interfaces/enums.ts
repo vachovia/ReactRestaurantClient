@@ -25,3 +25,8 @@ export enum SD_SortTypes {
   NAME_A_Z = "Name A - Z",
   NAME_Z_A = "Name Z - A",
 }
+
+export interface StatusColor {
+  color: string;
+  value: SD_Status | string;
+}
