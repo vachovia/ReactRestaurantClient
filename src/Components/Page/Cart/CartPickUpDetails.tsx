@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { apiResponse, cartItemModel, shoppingCartModel, userModel } from "./../../../Interfaces";
 import { RootState } from "./../../../Storage/Redux/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { inputHelper } from "./../../../Helper";
 import { MiniLoader } from "./../Common";
 import { useInitiatePaymentMutation } from "./../../../Apis/paymentApi";
@@ -36,6 +36,14 @@ const CartPickUpDetails = () => {
         const tempData = inputHelper(e, userInput);
         setUserInput(tempData);
     }
+
+    useEffect(() => {
+        setUserInput({
+          name: userFromStore.fullName,
+          email: userFromStore.email,
+          phoneNumber: '',
+        });
+    }, [userFromStore]);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

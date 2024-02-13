@@ -1,16 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    menuItem: []
-}
+  menuItem: [],
+  search: '',
+};
 
 export const menuItemSlice = createSlice({
-    name: "MenuItem",
-    initialState: initialState,
-    reducers: {
-        setMenuItem: (state, action) => { state.menuItem = action.payload; }
-    }
+  name: 'MenuItem',
+  initialState: initialState,
+  reducers: {
+    setMenuItem: (state, action) => {
+      return {...state, menuItem: action.payload};
+    },
+    setSearchItem: (state, action) => {
+      return {...state, search: action.payload};
+    },
+  },
 });
 
-export const { setMenuItem } = menuItemSlice.actions;
+export const {setMenuItem, setSearchItem} = menuItemSlice.actions;
 export const menuItemReducer = menuItemSlice.reducer;

@@ -4,7 +4,7 @@ import {apiResponse, orderHeaderModel, orderModel} from './../Interfaces';
 const orderApi = createApi({
   reducerPath: 'orderApi',
   baseQuery: fetchBaseQuery({
-    baseUrl:  'http://react.localhost/api/', // 'https://localhost:7067/api/'
+    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/', // 'https://localhost:7067/api/'
   }),
   tagTypes: ['Orders'],
   endpoints: (builder) => ({

@@ -3,5 +3,6 @@ import menuItemApi from './menuItemApi';
 import shoppingCartApi from './shoppingCartApi';
 import paymentApi from './paymentApi';
 import orderApi from './orderApi';
+import { baseUrl, baseUrlLocal } from './baseUrl';
 
-export {menuItemApi, shoppingCartApi, paymentApi, orderApi, authApi};
+export {baseUrl,baseUrlLocal, menuItemApi, shoppingCartApi, paymentApi, orderApi, authApi};

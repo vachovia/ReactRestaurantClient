@@ -51,6 +51,11 @@ function Header() {
                   </span>
                   <ul className="dropdown-menu">
                     <li>
+                      <span className="dropdown-item" onClick={() => navigate('/menuItem/menuItemList')} style={{cursor: 'pointer'}}>
+                        Menu Item
+                      </span>
+                    </li>
+                    <li>
                       <span className="dropdown-item" onClick={() => navigate('/order/myOrders')} style={{cursor: 'pointer'}}>
                         My Orders
                       </span>
