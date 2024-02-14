@@ -80,7 +80,6 @@ const Register = () => {
                         <select className="form-control form-select" name="role" value={values.role} onChange={handleInputChange('role')} required>
                             <option value="">--Select Role--</option>
                             <option value={`${SD_Roles.USER}`}>User</option>
-                            <option value={`${SD_Roles.ADMIN}`}>Admin</option>
                         </select>
                         { errors.role && (<InvalidInput message={errors.role}/>) }
                     </div>
