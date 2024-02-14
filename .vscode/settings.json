@@ -1,0 +1,5 @@
+{
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
+  "appService.defaultWebAppToDeploy": "/subscriptions/e163014e-27ba-418d-8272-20886972026b/resourceGroups/vladsreactapp_group/providers/Microsoft.Web/sites/vladsreactapp",
+  "appService.deploySubpath": "."
+}
