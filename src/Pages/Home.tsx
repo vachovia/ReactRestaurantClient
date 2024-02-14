@@ -1,4 +1,4 @@
-import {MenuItemList} from '../Components/Page/MenuItems';
+import {HomePageMenuItemList} from '../Components/Page/MenuItems';
 import {Banner} from '../Components/Page/Common';
 
 function Home() {
@@ -6,7 +6,7 @@ function Home() {
     <div>
       <Banner />
       <div className="container p-2">
-        <MenuItemList />
+        <HomePageMenuItemList />
       </div>
     </div>
   );

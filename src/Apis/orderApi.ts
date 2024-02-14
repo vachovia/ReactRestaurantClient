@@ -4,7 +4,11 @@ import {apiResponse, orderHeaderModel, orderModel} from './../Interfaces';
 const orderApi = createApi({
   reducerPath: 'orderApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/', // 'https://localhost:7067/api/'
+    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/', // 'https://localhost:7067/api/',
+    prepareHeaders: (headers: Headers, api) => {
+      const token = localStorage.getItem('token');
+      token && headers.append('Authorization', `Bearer ${token}`);
+    },
   }),
   tagTypes: ['Orders'],
   endpoints: (builder) => ({

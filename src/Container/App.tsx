@@ -1,7 +1,7 @@
 import {AccessDenied, AllOrders, Home, Login, MenuItemDetails, MenuItemList, MenuItemUpsert, MyOrders, NotFound, OrderConfirmed, OrderDetails, Payment, Register, ShoppingCart} from './../Pages';
 import {Header, Footer} from './../Components/Layout';
 import {Routes, Route} from 'react-router-dom';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useGetShoppingCartByUserIdQuery} from '../Apis/shoppingCartApi';
 import {setShoppingCart} from '../Storage/Redux/shoppingCartSlice';
@@ -12,11 +12,12 @@ import jwt_decode from 'jwt-decode';
 import {RootState} from './../Storage/Redux/store';
 
 function App() {
+  const [skip, setSkip] = useState(true);
   const userFromStore: Partial<userModel> = useSelector((state: RootState) => state.userAuthStore);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {data, isLoading} = useGetShoppingCartByUserIdQuery(userFromStore.uid);
+  const {data, isLoading} = useGetShoppingCartByUserIdQuery(userFromStore.uid, {skip: skip});
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -29,7 +30,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (userFromStore.uid) {
+      setSkip(false);
+    }
+  }, [userFromStore]);
+
+  useEffect(() => {
+    if (!isLoading && data) {
       dispatch(setShoppingCart(data.cartItems));
     }
   }, [data]);

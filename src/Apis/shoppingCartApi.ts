@@ -4,6 +4,10 @@ const shoppingCartApi = createApi({
   reducerPath: 'shoppingCartApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/',
+    prepareHeaders: (headers: Headers, api) => {
+      const token = localStorage.getItem('token');
+      token && headers.append('Authorization', `Bearer ${token}`);
+    },
   }),
   tagTypes: ['ShoppingCarts'],
   endpoints: (builder) => ({
