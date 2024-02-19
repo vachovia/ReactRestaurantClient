@@ -1,10 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {apiResponse, orderHeaderModel, orderModel} from './../Interfaces';
+import {baseUrlLocal} from './baseUrl';
 
 const orderApi = createApi({
   reducerPath: 'orderApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/', // 'https://localhost:7067/api/',
+    baseUrl: 'http://react.localhost/api/', // 'https://localhost:7067/api/',
     prepareHeaders: (headers: Headers, api) => {
       const token = localStorage.getItem('token');
       token && headers.append('Authorization', `Bearer ${token}`);

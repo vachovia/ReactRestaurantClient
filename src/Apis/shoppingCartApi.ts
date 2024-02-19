@@ -1,9 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {baseUrlLocal} from './baseUrl';
 
 const shoppingCartApi = createApi({
   reducerPath: 'shoppingCartApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/',
+    baseUrl: 'http://react.localhost/api/',
     prepareHeaders: (headers: Headers, api) => {
       const token = localStorage.getItem('token');
       token && headers.append('Authorization', `Bearer ${token}`);

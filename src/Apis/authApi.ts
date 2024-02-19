@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { authResponse, userLoginModel, userRegisterModel } from './../Interfaces';
+import {baseUrlLocal} from './baseUrl';
 
 const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://reactdotnetapp20240213120238.azurewebsites.net/api/',
+    baseUrl: 'http://react.localhost/api/',
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation<void, userRegisterModel>({
