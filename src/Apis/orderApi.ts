@@ -1,16 +1,10 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
 import {apiResponse, orderHeaderModel, orderModel} from './../Interfaces';
-import {baseUrlLocal} from './baseUrl';
+import {baseQuery} from './baseUrl';
 
 const orderApi = createApi({
   reducerPath: 'orderApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://react.localhost/api/', // 'https://localhost:7067/api/',
-    prepareHeaders: (headers: Headers, api) => {
-      const token = localStorage.getItem('token');
-      token && headers.append('Authorization', `Bearer ${token}`);
-    },
-  }),
+  baseQuery: baseQuery,
   tagTypes: ['Orders'],
   endpoints: (builder) => ({
     createOrder: builder.mutation<apiResponse<orderHeaderModel>, orderModel>({
@@ -47,5 +41,6 @@ const orderApi = createApi({
   }),
 });
 
-export const {useCreateOrderMutation, useGetAllOrdersQuery, useGetOrderDetailsQuery, useUpdateOrderHeaderMutation} = orderApi;
+export const {useCreateOrderMutation, useGetAllOrdersQuery, useGetOrderDetailsQuery, useUpdateOrderHeaderMutation} =
+  orderApi;
 export default orderApi;

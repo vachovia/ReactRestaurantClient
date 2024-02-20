@@ -1,16 +1,10 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
 import { apiResponse, shoppingCartModel } from './../Interfaces';
-import {baseUrlLocal} from './baseUrl';
+import {baseQuery} from './baseUrl';
 
 const paymentApi = createApi({
   reducerPath: 'paymentApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://react.localhost/api/',
-    prepareHeaders: (headers: Headers, api) => {
-      const token = localStorage.getItem('token');
-      token && headers.append('Authorization', `Bearer ${token}`);
-    },
-  }),
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
     initiatePayment: builder.mutation<apiResponse<shoppingCartModel>, string>({
       query: (userId) => ({

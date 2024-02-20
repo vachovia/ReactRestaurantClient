@@ -1,5 +1,15 @@
-const baseUrl = 'https://reactdotnetapp20240213120238.azurewebsites.net/api/';
-const baseUrlLocal = 'http://react.localhost/api/';
+import {fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+
+const baseUrl = 'https://localhost:7067/api/';
+const baseUrlIIS = 'http://react.localhost/api/';
 const baseUrlBH = 'https://redmangoapi.azurewebsites.net/api/';
 
-export {baseUrl, baseUrlLocal, baseUrlBH};
+const baseQuery = fetchBaseQuery({
+  baseUrl: baseUrlIIS,
+  prepareHeaders: (headers: Headers, api) => {
+    const token = localStorage.getItem('token');
+    token && headers.append('Authorization', `Bearer ${token}`);
+  },
+});
+
+export {baseUrl, baseUrlIIS, baseUrlBH, baseQuery};

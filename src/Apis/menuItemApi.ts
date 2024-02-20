@@ -1,15 +1,9 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {baseUrlLocal} from './baseUrl';
+import {createApi} from '@reduxjs/toolkit/query/react';
+import {baseQuery} from './baseUrl';
 
 const menuItemApi = createApi({
   reducerPath: 'menuItemApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://react.localhost/api/',
-    prepareHeaders: (headers: Headers, api) => {
-      const token = localStorage.getItem('token');
-      token && headers.append('Authorization', `Bearer ${token}`);
-    },
-  }),
+  baseQuery: baseQuery,
   tagTypes: ['MenuItems'],
   endpoints: (builder) => ({
     getMenuItems: builder.query({
