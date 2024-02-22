@@ -16,8 +16,7 @@ const OrderList = ({isLoading, orderData}: OrderListProps) => {
     <>
       {isLoading && <MainLoader />}
       {!isLoading && (
-        <div className="p-5">
-          <h1 className="text-success">Orders List</h1>
+        <div className="px-5">
           <div className="p-2">
             <div className="row border-bottom" style={{backgroundColor: '#fafafa'}}>
               <div className="col-1 py-2 fw-bold">ID</div>

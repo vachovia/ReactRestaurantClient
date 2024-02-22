@@ -6,6 +6,8 @@ import {apiResponse, cartItemModel, orderDetailsDto, orderHeaderModel} from './.
 import {useCreateOrderMutation} from './../../../Apis/orderApi';
 import {SD_Status} from './../../../Interfaces/enums';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setShoppingCart } from '../../../Storage/Redux/shoppingCartSlice';
 
 const PaymentForm = ({data, userInput}: orderSummaryProps) => {
   const stripe = useStripe();
@@ -13,6 +15,7 @@ const PaymentForm = ({data, userInput}: orderSummaryProps) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [createOrder] = useCreateOrderMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     // We don't want to let default form submission happen here,
@@ -73,6 +76,7 @@ const PaymentForm = ({data, userInput}: orderSummaryProps) => {
         }).unwrap();
         
         if (response.result.status === SD_Status.CONFIRMED) {
+          dispatch(setShoppingCart([]));
           navigate(`/order/orderConfirmed/${response.result?.orderHeaderId}`);
         } else {
           navigate('/failed');
